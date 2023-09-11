@@ -35,9 +35,25 @@ public class BurgerTests {
         Assert.assertEquals(95, burger.getPrice(), 0);
     }
 
+    @Test
+    public void verifyMoveIngredient() {
+        ingredient = new Ingredient(IngredientType.SAUCE, "Соус", 10);
+        burger.addIngredient(ingredient);
+        burger.moveIngredient(0, 1);
+        Mockito.verify(burger).moveIngredient(0, 1);
+    }
 
     @Test
-    public void verifyIngredient() {
+    public void verifyDeleteIngredient() {
+        ingredient = new Ingredient(IngredientType.SAUCE, "Соус", 10);
+        burger.addIngredient(ingredient);
+        burger.removeIngredient(0);
+        Mockito.verify(burger).removeIngredient(0);
+    }
+
+
+    @Test
+    public void verifyAddIngredient() {
         ingredient = new Ingredient(IngredientType.SAUCE, "Соус", 10);
         burger.addIngredient(ingredient);
         Mockito.verify(burger).addIngredient(ingredient);
